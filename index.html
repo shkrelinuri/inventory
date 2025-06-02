@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="login-screen" class="centered">
+    <h2 id="login-title">Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()" id="login-btn">Login</button>
+    <div style="margin-top: 10px;">
+      <label for="lang-select" id="lang-label">Language / Lingua:</label>
+      <select id="lang-select" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="it">Italiano</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Category Page -->
+  <div id="category-screen" style="display: none;">
+    <header>
+      <h1 id="category-header">Select Category</h1>
+      <button onclick="logout()" id="logout-btn">Logout</button>
+    </header>
+    <div class="search-bar">
+      <input type="text" id="category-search" placeholder="Search categories..." oninput="filterCategories()" />
+    </div>
+    <div id="category-list" class="category-grid"></div>
+  </div>
+
+  <!-- Inventory App -->
+  <div id="app" style="display: none;">
+    <header>
+      <h1 id="header-title">Inventory System</h1>
+      <button onclick="goToCategories()">Back to Categories</button>
+    </header>
+
+    <div class="search-bar">
+      <input type="text" id="material-search" placeholder="Search materials..." oninput="filterMaterials()" />
+    </div>
+
+    <section id="add-material">
+      <h2 id="add-title">Add / Edit Material</h2>
+      <input type="hidden" id="edit-index" />
+      <input type="text" id="material-name" placeholder="Material Name" />
+      <input type="text" id="material-type" placeholder="Material Type" />
+      <input type="text" id="material-category" placeholder="Category" readonly />
+      <input type="number" id="material-qty" placeholder="Quantity" />
+      <button onclick="saveMaterial()" id="save-btn">Save Material</button>
+    </section>
+
+    <section id="materials-list">
+      <h2 id="inventory-title">Inventory</h2>
+      <table>
+        <thead>
+          <tr>
+            <th id="th-name">Name</th>
+            <th id="th-type">Type</th>
+            <th id="th-category">Category</th>
+            <th id="th-quantity">Quantity</th>
+            <th id="th-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="material-table-body"></tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
