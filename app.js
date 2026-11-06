@@ -1,6 +1,5 @@
 let currentLanguage = 'en';
 let selectedCategory = '';
-const USERS = [{ username: "agscoop", password: "ags2025" }];
 
 const translations = {
   en: {
